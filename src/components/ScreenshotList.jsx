@@ -60,7 +60,7 @@ function ScreenshotList() {
 
     try {
       const response = await axios.get(
-        `$https://colton-database.vercel.app/api/screenshots`,
+        `https://colton-database.vercel.app/api/screenshots`,
         {
           params: { page, limit: ITEMS_PER_PAGE, filterDate },
         }
