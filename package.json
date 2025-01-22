@@ -13,6 +13,8 @@
     "@hookform/resolvers": "^3.10.0",
     "axios": "^1.7.9",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "dotenv-webpack": "^8.1.0",
     "lucide-react": "^0.468.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",

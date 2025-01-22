@@ -13,6 +13,9 @@ function ScreenshotList() {
   const [refreshing, setRefreshing] = useState(false);
   const [deletingAll, setDeletingAll] = useState(false);
 
+  const apiUrl = process.env.REACT_APP_API_BASE_URL;
+
+
   // Date filter state
   const [filterDate, setFilterDate] = useState("");
 
@@ -34,7 +37,7 @@ function ScreenshotList() {
     setDeletingAll(true);
     try {
       const formattedDate = new Date(date).toISOString();
-      await axios.delete("http://localhost:5000/api/screenshots", {
+      await axios.delete(`${apiUrl}/api/screenshots`, {
         data: { date: formattedDate },
       });
 
@@ -57,7 +60,7 @@ function ScreenshotList() {
 
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/screenshots",
+        `${apiUrl}/api/screenshots`,
         {
           params: { page, limit: ITEMS_PER_PAGE, filterDate },
         }
@@ -141,7 +144,7 @@ function ScreenshotList() {
     setDeletingId(id);
 
     try {
-      await axios.delete(`http://localhost:5000/api/screenshots/${id}`);
+      await axios.delete(`${apiUrl}/api/screenshots/${id}`);
 
       setScreenshots((prev) =>
         prev.filter((screenshot) => screenshot._id !== id)
