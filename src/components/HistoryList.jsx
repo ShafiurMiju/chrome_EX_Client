@@ -11,7 +11,7 @@ function HistoryList() {
   const [filterDate, setFilterDate] = useState("");
   const [deletingDate, setDeletingDate] = useState(null); // Track which date is being deleted
 
-  const apiUrl = process.env.REACT_APP_API_BASE_URL;
+  const apiUrl = import.meta.env.REACT_APP_API_BASE_URL;
 
 
   const ITEMS_PER_PAGE = 50;
