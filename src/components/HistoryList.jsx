@@ -11,7 +11,7 @@ function HistoryList() {
   const [filterDate, setFilterDate] = useState("");
   const [deletingDate, setDeletingDate] = useState(null); // Track which date is being deleted
 
-  const apiUrl = import.meta.env.REACT_APP_API_BASE_URL;
+  //const apiUrl = import.meta.env.REACT_APP_API_BASE_URL;
 
 
   const ITEMS_PER_PAGE = 50;
@@ -24,7 +24,7 @@ function HistoryList() {
   const fetchHistory = async (page, filterDate) => {
     setLoading(true);
     try {
-      const response = await axios.get(`${apiUrl}/api/history`, {
+      const response = await axios.get(`https://colton-database.vercel.app/api/history`, {
         params: { page, limit: ITEMS_PER_PAGE, filterDate },
       });
       const groupedData = groupByDate(response.data.history); // Group history by date
@@ -62,7 +62,7 @@ function HistoryList() {
   // Handle delete a single history item
   const deleteHistoryItem = async (id, date) => {
     try {
-      await axios.delete(`${apiUrl}/api/history/${id}`);
+      await axios.delete(`https://colton-database.vercel.app/api/history/${id}`);
       const updatedHistory = { ...history };
       updatedHistory[date] = updatedHistory[date].filter((item) => item._id !== id);
       if (updatedHistory[date].length === 0) {
@@ -79,7 +79,7 @@ function HistoryList() {
   const deleteAllForDate = async (date) => {
     setDeletingDate(date); // Indicate which date is being deleted
     try {
-      await axios.delete(`${apiUrl}/api/history`, {
+      await axios.delete(`https://colton-database.vercel.app/api/history`, {
         data: { date }, // Pass the date to the backend
       });
       const updatedHistory = { ...history };

@@ -13,7 +13,7 @@ function ScreenshotList() {
   const [refreshing, setRefreshing] = useState(false);
   const [deletingAll, setDeletingAll] = useState(false);
 
-  const apiUrl = process.env.REACT_APP_API_BASE_URL;
+  //const apiUrl = process.env.REACT_APP_API_BASE_URL;
 
 
   // Date filter state
@@ -37,7 +37,7 @@ function ScreenshotList() {
     setDeletingAll(true);
     try {
       const formattedDate = new Date(date).toISOString();
-      await axios.delete(`${apiUrl}/api/screenshots`, {
+      await axios.delete(`https://colton-database.vercel.app/api/screenshots`, {
         data: { date: formattedDate },
       });
 
@@ -60,7 +60,7 @@ function ScreenshotList() {
 
     try {
       const response = await axios.get(
-        `${apiUrl}/api/screenshots`,
+        `$https://colton-database.vercel.app/api/screenshots`,
         {
           params: { page, limit: ITEMS_PER_PAGE, filterDate },
         }
@@ -144,7 +144,7 @@ function ScreenshotList() {
     setDeletingId(id);
 
     try {
-      await axios.delete(`${apiUrl}/api/screenshots/${id}`);
+      await axios.delete(`https://colton-database.vercel.app/api/screenshots/${id}`);
 
       setScreenshots((prev) =>
         prev.filter((screenshot) => screenshot._id !== id)
