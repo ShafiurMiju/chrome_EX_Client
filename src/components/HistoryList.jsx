@@ -14,7 +14,7 @@ function HistoryList() {
   //const apiUrl = import.meta.env.REACT_APP_API_BASE_URL;
 
 
-  const ITEMS_PER_PAGE = 1000;
+  const ITEMS_PER_PAGE = 2000;
 
   useEffect(() => {
     fetchHistory(currentPage, filterDate);
