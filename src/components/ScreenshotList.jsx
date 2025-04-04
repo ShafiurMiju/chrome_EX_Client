@@ -19,7 +19,7 @@ function ScreenshotList() {
   // Date filter state
   const [filterDate, setFilterDate] = useState("");
 
-  const ITEMS_PER_PAGE = 1000;
+  const ITEMS_PER_PAGE = 500;
 
   useEffect(() => {
     fetchScreenshots(currentPage, filterDate);
